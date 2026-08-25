@@ -86,64 +86,60 @@ browser submit normally.
 
 ---
 
-## 3. Deploy
+## 3. Deploy — GitHub Pages (primary)
 
-Because it's static, deployment is copy-the-folder simple. The site lives in the
-`roo-management-website/` subfolder of this repo, so set that as the root/publish
-directory.
+This repo is set up to publish the site automatically with **GitHub Actions**.
+The workflow at [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml)
+uploads **only** the `roo-management-website/` folder to GitHub Pages, so the
+rest of the repository is untouched.
 
-### Render  (render.com) — *`render.yaml` included*
-1. **New → Static Site**, connect this GitHub repo.
-2. **Root Directory:** `roo-management-website`
-3. **Build Command:** *(leave empty)*
-4. **Publish Directory:** `.`
-5. Create — Render builds a URL like `roo-management-website.onrender.com`.
-   (Or commit `render.yaml` and use **New → Blueprint** to configure it
-   automatically.)
+**One-time setup:**
+1. On GitHub, go to the repo → **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Merge this branch into the default branch (`master`). The workflow runs on
+   every push to `master` that changes `roo-management-website/`.
+   *(You can also trigger it manually: **Actions → "Deploy Roo Management
+   website" → Run workflow**.)*
+4. When it finishes, your site is live. Without a custom domain the URL is
+   `https://<your-username>.github.io/default/`; with your custom domain it
+   serves at the domain root. All asset paths are **relative**, so both work.
 
-### Netlify — *`netlify.toml` included*
-- Drag-and-drop the `roo-management-website` folder onto app.netlify.com, **or**
-  connect the repo and set **Base directory** = `roo-management-website`,
-  **Publish directory** = `roo-management-website`.
+> **Why a workflow and not the simple Pages toggle?** GitHub's built-in Pages
+> source can only serve from a repo's **root** or a **`/docs`** folder — not an
+> arbitrary subfolder. The Actions workflow lets us keep the site neatly in
+> `roo-management-website/` and publish just that folder.
 
-### Vercel
-- Import the repo, set **Root Directory** = `roo-management-website`,
-  Framework preset = **Other**. No build command.
-
-### GitHub Pages
-- Move the site's contents to the repo root (or a `/docs` folder) and enable
-  Pages in **Settings → Pages**. Put your custom domain in a `CNAME` file.
-
-### Cloudflare Pages
-- Connect the repo, **Build output directory** = `roo-management-website`,
-  no build command.
+### Alternate hosts (optional)
+The same static files also deploy to **Netlify** (`netlify.toml` included),
+**Render** (`render.yaml`), **Vercel**, or **Cloudflare Pages** — set the
+project's root/publish directory to `roo-management-website`, no build command.
 
 ---
 
-## 4. Connect your custom domain
+## 4. Connect your custom domain (GitHub Pages)
 
-You have a domain ready — here's the general flow (identical idea on every host):
+1. **Add a `CNAME` file** to `roo-management-website/` containing just your
+   domain, e.g.:
+   ```
+   www.roomanagement.com
+   ```
+   (Committing this is the most reliable way to keep the custom domain across
+   Actions deploys. Alternatively, set it in **Settings → Pages → Custom
+   domain** — GitHub stores it there.)
+2. At your **domain registrar** (GoDaddy, Namecheap, Cloudflare, etc.), add DNS:
+   - **`www`** → **CNAME** → `<your-username>.github.io`
+   - **root/apex** (`@`) → GitHub Pages **A records**:
+     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+     (and the matching **AAAA** records if you want IPv6:
+     `2606:50c0:8000::153` … `:8003::153`).
+3. Back in **Settings → Pages**, tick **Enforce HTTPS** once the certificate is
+   issued (automatic after DNS resolves — minutes, up to ~24h to propagate).
+4. Update the domain in the SEO fields (see the checklist in §2): the
+   `<link rel="canonical">` and Open Graph URLs in `index.html`, plus
+   `robots.txt` and `sitemap.xml`.
 
-1. In your host's dashboard, open the site → **Custom domains / Domains** →
-   **Add** `roomanagement.com` and `www.roomanagement.com`.
-2. At your **domain registrar** (GoDaddy, Namecheap, Google Domains, etc.),
-   update DNS with the records your host shows you:
-   - **`www`** → a **CNAME** pointing to the host's target
-     (e.g. `your-site.onrender.com` or `your-site.netlify.app`).
-   - **root/apex** (`@`) → either an **ALIAS/ANAME** to the host target, or the
-     **A records** the host lists. (Cloudflare/Netlify/Render support apex; on
-     some registrars you instead redirect the apex to `www`.)
-3. Let the host issue the free **SSL certificate** (automatic once DNS
-   resolves — usually minutes, up to ~24h for DNS to propagate).
-4. Set one canonical version (typically force `https://www.…`) and update the
-   domain everywhere listed in the checklist above.
-
-> **A note on "hosted on Reddit":** Reddit doesn't host websites, so this can't
-> deploy there. The instructions above assume you meant a static host — most
-> likely **Render** (render.com), which is why `render.yaml` is included. If you
-> meant Netlify, Vercel, GitHub Pages, or Cloudflare Pages, those are covered
-> too. Let me know which one and I'll tailor the exact DNS records for your
-> registrar and domain.
+> **Tell me your domain and I'll wire it in for you** — I'll add the `CNAME`
+> file and replace every `roomanagement.com` placeholder with your real domain.
 
 ---
 
