@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" role="img" aria-label="City skyline">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b2e2f" stop-opacity="0"/>
+      <stop offset="1" stop-color="#08211f" stop-opacity=".9"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#sky)">
+    <!-- layered downtown Houston-style skyline silhouette -->
+    <path d="M0 220 V150 h60 v-30 h40 v50 h30 V95 h50 v55 h34 V70 h20 V45 h16 v25 h20 v80 h40 V120 h44 v40 h30 V60 h18 l10-18 10 18 v118 h30 V100 h50 v20 h30 V150 h40 v-70 h24 v70 h40 V116 h46 v34 h30 V88 h22 V64 h14 v24 h22 v62 h40 V128 h50 v22 h30 V78 h20 l8-16 8 16 v72 h34 V112 h48 v38 h30 V96 h40 v54 h30 V70 h18 V48 h14 v22 h18 v80 h44 V124 h46 v26 h34 V90 h24 v60 h40 V118 h50 v32 h30 V150 h60 v70 z"/>
+  </g>
+</svg>
