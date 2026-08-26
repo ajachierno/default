@@ -57,9 +57,9 @@ Everything below is placeholder content. Search-and-replace these in
 `index.html` before going live:
 
 - **Phone** — `(713) 555-0142` / `tel:+17135550142`
-- **Email** — `hello@roomanagement.com`
+- **Email** — `hello@roo-management.com`
 - **Address** — `1200 Smith Street, Suite 1600, Houston, TX 77002`
-- **Domain** — `https://www.roomanagement.com/` (in `<link rel="canonical">`,
+- **Domain** — `https://www.roo-management.com/` (in `<link rel="canonical">`,
   the Open Graph tags, structured data, `robots.txt`, and `sitemap.xml`)
 - **Stats** — doors managed, years, retention (in the "stats" section)
 - **Pricing** — the three plans (or delete the pricing section)
@@ -121,7 +121,7 @@ project's root/publish directory to `roo-management-website`, no build command.
 1. **Add a `CNAME` file** to `roo-management-website/` containing just your
    domain, e.g.:
    ```
-   www.roomanagement.com
+   www.roo-management.com
    ```
    (Committing this is the most reliable way to keep the custom domain across
    Actions deploys. Alternatively, set it in **Settings → Pages → Custom
@@ -139,7 +139,7 @@ project's root/publish directory to `roo-management-website`, no build command.
    `robots.txt` and `sitemap.xml`.
 
 > **Tell me your domain and I'll wire it in for you** — I'll add the `CNAME`
-> file and replace every `roomanagement.com` placeholder with your real domain.
+> file and replace every `roo-management.com` placeholder with your real domain.
 
 ---
 

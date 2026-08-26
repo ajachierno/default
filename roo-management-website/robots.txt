@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.roomanagement.com/sitemap.xml
+Sitemap: https://www.roo-management.com/sitemap.xml
