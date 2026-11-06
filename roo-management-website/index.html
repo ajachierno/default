@@ -32,13 +32,12 @@
     "areaServed": "Houston, Texas and surrounding areas",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "1234 [Street Address]",
       "addressLocality": "Houston",
       "addressRegion": "TX",
-      "postalCode": "77002",
       "addressCountry": "US"
     },
-    "telephone": "#",
+    "telephone": "+1-346-327-0525",
+    "email": "roomanagementtx@gmail.com",
     "priceRange": "$$",
     "openingHours": "Mo-Fr 09:00-18:00"
   }
@@ -53,7 +52,7 @@
     <div class="wrap topbar__inner">
       <span class="topbar__item">📍 Serving Greater Houston &amp; surrounding areas</span>
       <span class="topbar__sep" aria-hidden="true">•</span>
-      <a class="topbar__item" href="tel:#">📞 #</a>
+      <a class="topbar__item" href="tel:+13463270525">📞 (346) 327-0525</a>
       <span class="topbar__sep" aria-hidden="true">•</span>
       <a class="topbar__item" href="mailto:roomanagementtx@gmail.com">✉ roomanagementtx@gmail.com</a>
     </div>
@@ -138,8 +137,12 @@
                 <input id="mf-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required />
               </div>
             </div>
+            <label class="consent" for="mf-sms">
+              <input id="mf-sms" name="sms_consent" type="checkbox" value="yes" />
+              <span>Optional: Roo Management Inc. may text me about my inquiry, property, and appointments at the number provided. Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to opt out. Consent is not a condition of service. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html#sms">SMS Terms</a>.</span>
+            </label>
             <button class="btn btn--primary btn--block" type="submit">Send My Free Analysis</button>
-            <p class="mini-form__fineprint">We'll never share your information. No spam, ever.</p>
+            <p class="mini-form__fineprint">We never sell or share your information. <a href="privacy.html">Privacy Policy</a></p>
           </form>
         </div>
       </div>
@@ -305,7 +308,7 @@
             <li>Fast, friendly local support</li>
           </ul>
           <div class="split__actions">
-            <a class="btn btn--primary" href="#listings">View Available Rentals</a>
+            <a class="btn btn--primary" href="#contact">View Available Rentals</a>
             <a class="btn btn--outline" href="#portals">Tenant Login</a>
           </div>
         </div>
@@ -343,7 +346,7 @@
             <p>Pay rent, submit maintenance, and manage your lease.</p>
             <span class="portal-card__link">Tenant Login →</span>
           </a>
-          <a class="portal-card" href="#listings">
+          <a class="portal-card" href="#contact">
             <span class="portal-card__icon" data-icon="search"></span>
             <h3>Available Rentals</h3>
             <p>Browse current Houston listings and apply online.</p>
@@ -351,8 +354,7 @@
           </a>
         </div>
         <p class="portals__note">
-          Portal links are placeholders — connect them to your management software (AppFolio,
-          Buildium, Rentvine, etc.) in <code>index.html</code>.
+          Portal access is set up when you sign a management agreement or lease. Need help logging in? Call (346) 327-0525.
         </p>
       </div>
     </section>
@@ -518,8 +520,8 @@
           <h2 id="contact-title">Let's talk about your property</h2>
           <p>Reach out for a free rental analysis or to ask any question. We typically respond within one business day.</p>
           <ul class="contact__list">
-            <li><span class="contact__ic" data-icon="pin"></span><div><strong>Office</strong>1234 [Street Address]<br />Houston, TX 77002</div></li>
-            <li><span class="contact__ic" data-icon="phone"></span><div><strong>Phone</strong><a href="tel:#">#</a></div></li>
+            <li><span class="contact__ic" data-icon="pin"></span><div><strong>Service area</strong>Houston, TX and surrounding areas</div></li>
+            <li><span class="contact__ic" data-icon="phone"></span><div><strong>Phone</strong><a href="tel:+13463270525">(346) 327-0525</a></div></li>
             <li><span class="contact__ic" data-icon="mail"></span><div><strong>Email</strong><a href="mailto:roomanagementtx@gmail.com">roomanagementtx@gmail.com</a></div></li>
             <li><span class="contact__ic" data-icon="clock"></span><div><strong>Hours</strong>Mon–Fri, 9:00 AM – 6:00 PM CST</div></li>
           </ul>
@@ -560,11 +562,15 @@
               <label for="c-message">How can we help?</label>
               <textarea id="c-message" name="message" rows="4" required></textarea>
             </div>
+            <label class="consent" for="c-sms">
+              <input id="c-sms" name="sms_consent" type="checkbox" value="yes" />
+              <span>Optional: Roo Management Inc. may text me about my inquiry, property, and appointments at the number provided. Message frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to opt out. Consent is not a condition of service. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html#sms">SMS Terms</a>.</span>
+            </label>
             <button class="btn btn--primary btn--block btn--lg" type="submit">Send Message</button>
             <p class="form__status" data-status hidden></p>
             <p class="form__fineprint">
-              This form is a front-end demo. Wire the <code>action</code> to a form service
-              (Formspree, Netlify Forms, Basin) or your CRM — see <code>README.md</code>.
+              Sending opens a pre-filled email to roomanagementtx@gmail.com. We never sell or share your
+              information. <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a>
             </p>
           </form>
         </div>
@@ -611,16 +617,16 @@
       <div class="footer__col footer__contact">
         <h3>Contact</h3>
         <ul>
-          <li><a href="tel:#">#</a></li>
+          <li><a href="tel:+13463270525">(346) 327-0525</a></li>
           <li><a href="mailto:roomanagementtx@gmail.com">roomanagementtx@gmail.com</a></li>
-          <li>1234 [Street Address]<br />Houston, TX 77002</li>
+          <li>Houston, TX</li>
         </ul>
       </div>
     </div>
     <div class="footer__bar">
       <div class="wrap footer__bar-inner">
         <p>© <span data-year>2026</span> Roo Management Inc. All rights reserved.</p>
-        <p class="footer__legal"><span aria-hidden="true">⌂</span> Equal Housing Opportunity · TREC Licensed</p>
+        <p class="footer__legal"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; SMS Terms</a> · <span aria-hidden="true">⌂</span> Equal Housing Opportunity · TREC Licensed</p>
       </div>
     </div>
   </footer>

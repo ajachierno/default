@@ -140,14 +140,15 @@
     doc.querySelectorAll(".stat__num").forEach(function (el) { statsIO.observe(el); });
   }
 
-  /* -------- Forms (front-end demo handling) --------
-     Replace this with a real submission: set the form's `action` to a
-     form endpoint (Formspree/Basin/Netlify) OR post to your CRM in fetch().
+  /* -------- Forms --------
+     No form backend: on submit, open a pre-filled email to the office.
+     If a real action URL is set later, the browser submits normally.
   */
+  var OFFICE_EMAIL = "roomanagementtx@gmail.com";
+
   function setupForms() {
     doc.querySelectorAll("form[data-form]").forEach(function (form) {
       form.addEventListener("submit", function (e) {
-        // If a real action URL is set, let the browser submit normally.
         var action = form.getAttribute("action");
         if (action && action !== "#") return;
 
@@ -156,22 +157,29 @@
           form.reportValidity();
           return;
         }
-        var status = form.querySelector("[data-status]");
-        var btn = form.querySelector('button[type="submit"]');
-        if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = "Sending…"; }
 
-        // Simulated success for the demo.
-        window.setTimeout(function () {
-          form.reset();
-          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; }
-          if (status) {
-            status.hidden = false;
-            status.className = "form__status is-success";
-            status.textContent = "Thanks! Your request was received (demo). Connect a form service to receive it for real.";
-          } else {
-            alert("Thanks! Your request was received (demo).");
+        var lines = [];
+        form.querySelectorAll("input, select, textarea").forEach(function (el) {
+          if (!el.name) return;
+          var label = el.name.replace(/_/g, " ");
+          if (el.type === "checkbox") {
+            if (el.name === "sms_consent") lines.push("SMS consent: " + (el.checked ? "YES, agreed to receive texts" : "no"));
+            return;
           }
-        }, 700);
+          if (el.value) lines.push(label.charAt(0).toUpperCase() + label.slice(1) + ": " + el.value);
+        });
+        var subject = form.getAttribute("data-form") === "rental-analysis" ? "Free rental analysis request" : "Website inquiry";
+        window.location.href = "mailto:" + OFFICE_EMAIL +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(lines.join("
+"));
+
+        var status = form.querySelector("[data-status]");
+        if (status) {
+          status.hidden = false;
+          status.className = "form__status is-success";
+          status.textContent = "Your email app should open with your message ready to send. If it doesn't, email us at " + OFFICE_EMAIL + " or call (346) 327-0525.";
+        }
       });
     });
   }
